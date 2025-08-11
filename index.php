@@ -3,7 +3,7 @@ require_once __DIR__ . '/init.php';
 $user = current_user();
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="<?= e($_SESSION['theme']) ?>">
 <head>
   <meta charset="utf-8">
   <title>Matrimonial Studio — Find your match</title>

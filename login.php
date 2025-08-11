@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="<?= e($_SESSION['theme']) ?>">
 <head>
   <meta charset="utf-8">
   <title>Login — Matrimonial Studio</title>

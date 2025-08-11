@@ -1,5 +1,6 @@
 <?php
 // footer.php - include at bottom of pages
+
 ?>
 <section class="container">
   <div class="card contact">
@@ -36,4 +37,41 @@
 
 <footer>
   &copy; <?= date('Y') ?> Matrimonial Studio — Designed by Kamrul Hassan
+  
 </footer>
+
+<script>// Theme switcher
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Update the radio button if it exists
+    const radio = document.querySelector(`input[name="theme"][value="${theme}"]`);
+    if (radio) {
+        radio.checked = true;
+        document.querySelectorAll('.theme-option').forEach(opt => {
+            opt.classList.remove('active');
+        });
+        radio.closest('.theme-option').classList.add('active');
+    }
+}
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);
+
+// Handle theme radio changes
+document.querySelectorAll('input[name="theme"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        setTheme(this.value);
+        
+        // Optional: Send to server to save preference
+        fetch('update_theme.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `theme=${this.value}`
+        });
+    });
+});</script>
